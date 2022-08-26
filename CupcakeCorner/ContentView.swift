@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var order = Order()
+    @StateObject var order = SharedOrder()
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     Picker("Select your cake type", selection: $order.type) {
-                        ForEach(Order.types.indices, id: \.self) {
-                            Text(Order.types[$0])
+                        ForEach(SharedOrder.types.indices, id: \.self) {
+                            Text(SharedOrder.types[$0])
                         }
                     }
                     
                     Stepper("Number of cakes: \(order.quantity)", value: $order.quantity, in: 3...20 )
+                        .accessibilityElement()
+                        .accessibilityLabel("Number of cakes")
+                        .accessibilityValue(String(order.quantity))
+                        .accessibilityAdjustableAction { direction in
+                            switch direction {
+                            case .increment:
+                                order.quantity += 1
+                            case .decrement:
+                                order.quantity -= 1
+                            default:
+                                print("Not handled")
+                            }
+                        }
                 }
                 
                 Section {
