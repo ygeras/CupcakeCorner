@@ -10,5 +10,3 @@ In this project is a multi-screen app for ordering cupcakes. This will use a cou
 
 <img src="images/CupcakeCorner1.png" width="300"> <img src="images/CupcakeCorner2.png" width="300"> <img src="images/CupcakeCorner3.png" width="300">
 <img src="images/CupcakeCorner4.png" width="300"> <img src="images/CupcakeCorner5.png" width="300">
-
-
